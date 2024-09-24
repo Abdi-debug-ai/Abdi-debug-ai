@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    Hello, World!
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+    <main>
+        <p>This is a paragraph on my website.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <ul id="menu" class="hidden">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<button id="openModal">Open Modal</button>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Modal Header</h2>
+        <p>This is a simple modal.</p>
+    </div>
+</div>
+<button id="scrollToTop" class="scroll-to-top">↑</button>
+,<div class="slider">
+    <div class="slides">
+        <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
+        <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
+        <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
+    </div>
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+</div>
+<button id="theme-toggle">Toggle Dark Mode</button>
+<div class="accordion">
+    <h2 class="accordion-header">Section 1</h2>
+    <div class="accordion-content">
+        <p>Content for section 1.</p>
+    </div>
+    <h2 class="accordion-header">Section 2</h2>
+    <div class="accordion-content">
+        <p>Content for section 2.</p>
+    </div>
+</div>
+<img class="lazy" data-src="image1.jpg" alt="Lazy Loaded Image">
+<img class="lazy" data-src="image2.jpg" alt="Lazy Loaded Image">
+<form id="signup-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="8">
+    <button type="submit">Sign Up</button>
+</form>
+<input type="text" id="search" placeholder="Search...">
+<ul id="results">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Fig</li>
+</ul>
+<button id="showNotification">Show Notification</button>
+<div id="notification" class="notification hidden">
+    <p>This is a notification message.</p>
+</div>
+<!-- Add these meta tags to your HTML head -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#317EFB"/>
+<canvas id="myChart"></canvas>
+<div id="chat-container">
+    <div id="messages"></div>
+    <input id="message-input" type="text" placeholder="Type a message">
+    <button id="send-button">Send</button>
+</div>
+// Include Firebase scripts or import Firebase libraries
+// Initialize Firebase with your configuration
+// <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+// <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+document.getElementById('send-button').addEventListener('click', () => {
+    const message = document.getElementById('message-input').value;
+    db.ref('messages').push().set({
+        message: message
+    });
+    document.getElementById('message-input').value = '';
+});
+
+db.ref('messages').on('child_added', (snapshot) => {
+    const message = snapshot.val().message;
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    document.getElementById('messages').appendChild(messageElement);
+
+
+
+}
+.content {
+    padding: 20px;
+    background: white;
+}
+<section class="lazy-load">
+    <h2>Lazy Loaded Content</h2>
+    <div class="content">This content will be loaded when you scroll into view.</div>
+</section>
+<div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+    </div>
+</div>
+<form action="/submit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890">
+
+    <label for="date">Date of Birth:</label>
+    <input type="date" id="date" name="date">
+
+    <label for="range">Age Range:</label>
+    <input type="range" id="range" name="range" min="18" max="100">
+
+    <label for="color">Favorite Color:</label>
+    <input type="color" id="color" name="color">
+
+    <button type="submit">Submit</button>
+</form>
+<audio controls>
+    <source src="audio.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+<details>
+    <summary>More Information</summary>
+    <p>This is additional information that is revealed when the user clicks on the summary.</p>
+</details>
+<div data-role="admin" data-id="12345">
+    User information goes here.
+</div>
+<iframe src="https://www.example.com" width="600" height="400" frameborder="0">
+    Your browser does not support iframes.
+</iframe>
+<header>
+    <h1>Website Title</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="home">
+        <h2>Home Section</h2>
+        <p>Content for the home section.</p>
+    </section>
+    <section id="about">
+        <h2>About Section</h2>
+        <p>Content for the about section.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Your Website</p>
+</footer>
+<blockquote>
+    <p>"This is a sample quote that highlights important information." - Author</p>
+</blockquote>
+<canvas id="myCanvas" width="400" height="400"></canvas>
+<button onclick="startWorker()">Start Worker</button>
+<p id="worker-output"></p>
+<label for="fruit">Choose a fruit:</label>
+<input list="fruits" id="fruit" name="fruit">
+<datalist id="fruits">
+    <option value="Apple">
+    <option value="Banana">
+    <option value="Cherry">
+    <option value="Date">
+</datalist>
+<form>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" autocomplete="username" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" autocomplete="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" autocomplete="new-password" required>
+
+    <button type="submit">Register</button>
+</form>
+<div contenteditable="true">
+    Edit this text.
+</div>
+<div itemscope itemtype="http://schema.org/Person">
+    <span itemprop="name">John Doe</span>
+    <span itemprop="jobTitle">Software Engineer</span>
+    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">123 Main St</span>,
+        <span itemprop="addressLocality">Anytown</span>,
+        <span itemprop="addressRegion">CA</span>
+    </span>
+</div>
+<label for="file">Upload progress:</label>
+<progress id="file" value="50" max="100">50%</progress>
+<label for="disk-space">Disk space usage:</label>
+<meter id="disk-space" value="70" min="0" max="100">70%</meter>
+<template id="my-template">
+    <div>
+        <p>This is some reusable content.</p>
+    </div>
+</template>
+<button onclick="loadTemplate()">Load Template</button>
+<div id="template-container"></div>
+<button id="show-dialog">Show Dialog</button>
+<dialog id="my-dialog">
+    <p>This is a modal dialog.</p>
+    <button id="close-dialog">Close</button>
+</dialog>
+<form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+    <label for="a">A:</label>
+    <input type="number" id="a" name="a" value="0">
+    +
+    <label for="b">B:</label>
+    <input type="number" id="b" name="b" value="0">
+    <output name="result" for="a b">0</output>
+</form>
+<address>
+    <p>Contact us at:</p>
+    <p>Email: <a href="mailto:support@example.com">support@example.com</a></p>
+    <p>Phone: +1-234-567-890</p>
+</address>
+<!-- Progress Bar -->
+<label for="progress">Loading Progress:</label>
+<progress id="progress" value="70" max="100">70%</progress>
+
+<!-- Meter Element -->
+<label for="meter">Battery Level:</label>
+<meter id="meter" value="0.6" min="0" max="1">60%</meter>
+<details>
+    <summary>Click to expand</summary>
+    <p>This is the hidden content that becomes visible when the summary is clicked.</p>
+</details>
+<!-- Define a template -->
+<template id="my-template">
+    <style>
+        .custom-element { color: blue; }
+    </style>
+    <div class="custom-element">
+        <slot name="content"></slot>
+    </div>
+</template>
+
+<!-- Use the template -->
+<div id="container"></div>
+
+<script>
+    const template = document.getElementById('my-template');
+    const container = document.getElementById('container');
+    const instance = document.importNode(template.content, true);
+    container.appendChild(instance);
+</script>
+<details>
+    <summary>More Details</summary>
+    <p>This is more detailed information that can be revealed or hidden.</p>
+</details>
+<picture>
+    <source srcset="image-large.jpg" media="(min-width: 800px)">
+    <source srcset="image-medium.jpg" media="(min-width: 500px)">
+    <img src="image-small.jpg" alt="Responsive Image">
+</picture>
+<label for="fruit">Choose a fruit:</label>
+<input list="fruits" id="fruit" name="fruit">
+<datalist id="fruits">
+    <option value="Apple">
+    <option value="Banana">
+    <option value="Cherry">
+    <option value="Date">
+</datalist>
+<form>
+    <fieldset>
+        <legend>Personal Information</legend>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name">
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name">
+    </fieldset>
+
+    <fieldset>
+        <legend>Contact Information</legend>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+    </fieldset>
+</form>
+<iframe src="https://www.example.com" style="width:100%; height:500px; border:none;" title="Example"></iframe>
+<base href="https://www.example.com/">
+<a href="page.html">Link to Page</a> <!-- Resolves to https://www.example.com/page.html -->
+<div style="background-color: lightblue; padding: 20px;">
+    This div has a light blue background.
+</div>
+<html>
+<head>
+    <style>
+        .background {
+            background-color: lightcoral;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        This div has a light coral background.
+    </div>
+</body>
+</html>
+<!-- index.html -->
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background">
+        This div has a background color from an external CSS file.
+    </div>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: lightgray;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Page with Light Gray Background</h1>
+    <p>This page has a light gray background color.</p>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .gradient-background {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-background">
+        This div has a gradient background.
+    </div>
+</body>
+</html>
+<form>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date">
+    
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time">
+    
+    <label for="number">Number (1-10):</label>
+    <input type="number" id="number" name="number" min="1" max="10">
+    
+    <label for="range">Range (0-100):</label>
+    <input type="range" id="range" name="range" min="0" max="100" step="1">
+    
+    <label for="color">Favorite Color:</label>
+    <input type="color" id="color" name="color">
+    
+    <button type="submit">Submit</button>
+</form>
+<section>
+    <h1>Introduction</h1>
+    <p>This is an introduction to the content of the page.</p>
+</section>
+
+<article>
+    <h2>Article Title</h2>
+    <p>This is the content of the article.</p>
+</article>
+<figure>
+    <img src="image.jpg" alt="A descriptive alt text">
+    <figcaption>A descriptive caption for the image.</figcaption>
+</figure>
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+    <label for="a">A:</label>
+    <input type="number" id="a" name="a" value="0">
+    +
+    <label for="b">B:</label>
+    <input type="number" id="b" name="b" value="0">
+    <output name="result" for="a b">0</output>
+</form>
+<p>Temperature: <data value="20">20°C</data></p>
+<iframe src="https://www.example.com" width="600" height="400" frameborder="0" title="Example"></iframe>
+<template id="my-template">
+    <div>
+        <p>This is some reusable content.</p>
+    </div>
+</template>
+
+<button onclick="useTemplate()">Use Template</button>
+<div id="template-container"></div>
+
+<script>
+    function useTemplate() {
+        const template = document.getElementById('my-template');
+        const clone = document.importNode(template.content, true);
+        document.getElementById('template-container').appendChild(clone);
+    }
+</script>
+<embed src="example.pdf" width="600" height="500" type="application/pdf">
+<video controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogv" type="video/ogg">
+    Your browser does not support the video tag.
+</video>
+<video controls>
+    <source src="movie.mp4" type="video/mp4">
+    <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    <track src="subtitles_es.vtt" kind="subtitles" srclang="es" label="Spanish">
+    Your browser does not support the video tag.
+</video>
+<!-- Progress Element -->
+<progress value="50" max="100">50%</progress>
+
+<!-- Meter Element -->
+<meter value="0.6" min="0" max="1">60%</meter>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        canvas.addEventListener('mousedown', () => drawing = true);
+        canvas.addEventListener('mouseup', () => drawing = false);
+        canvas.addEventListener('mousemove', draw);
+
+        function draw(event) {
+            if (!drawing) return;
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = 'black';
+            ctx.beginPath();
+            ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+            ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .parallax {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1200x800') no-repeat center center;
+            background-size: cover;
+            transform: translateZ(-1px) scale(2);
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax">
+        <div class="layer"></div>
+        <div class="content">
+            <h1>Parallax Scrolling Effect</h1>
+            <p>Scroll down to see the effect.</p>
+        </div>
+    </div>
+
+    <div style="height: 1000px; background: #eee;">
+        <p>More content here...</p>
+    </div>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="play">Play Sound</button>
+    <script>
+        const button = document.getElementById('play');
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        button.addEventListener('click', () => {
+            const oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 1); // Stop after 1 second
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .icon {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+        .color-picker {
+            display: flex;
+            margin-top: 20px;
+        }
+        .color-picker input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <svg id="icon" class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="#000"/>
+    </svg>
+    <div class="color-picker">
+        <input type="color" id="colorPicker" value="#000000"/>
+        <button id="applyColor">Apply Color</button>
+    </div>
+
+    <script>
+        document.getElementById('applyColor').addEventListener('click', () => {
+            const color = document.getElementById('colorPicker').value;
+            document.getElementById('icon').querySelector('path').setAttribute('fill', color);
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl') });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .controls input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawingCanvas" width="600" height="400"></canvas>
+    <div class="controls">
+        <input type="color" id="colorPicker" value="#000000"/>
+        <input type="number" id="brushSize" value="5" min="1"/>
+        <button id="clear">Clear Canvas</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        function setBrushColor() {
+            ctx.strokeStyle = document.getElementById('colorPicker').value;
+        }
+
+        function setBrushSize() {
+            ctx.lineWidth = document.getElementById('brushSize').value;
+        }
+
+        function draw(event) {
+            if (!drawing) return;
+            ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+            ctx.stroke();
+        }
+
+        canvas.addEventListener('mousedown', () => {
+            drawing = true;
+            ctx.beginPath();
+        });
+        canvas.addEventListener('mouseup', () => drawing = false);
+        canvas.addEventListener('mousemove', draw);
+
+        document.getElementById('colorPicker').addEventListener('input', setBrushColor);
+        document.getElementById('brushSize').addEventListener('input', setBrushSize);
+        document.getElementById('clear').addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animationCanvas" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
+        let x = 0;
+        let y = canvas.height / 2;
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(x, y, 50, 50);
+            x += 2;
+            if (x > canvas.width) x = -50;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .audio-controls button,
+        .audio-controls input {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <div class="audio-controls">
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="stop">Stop</button>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1"/>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        document.getElementById('play').addEventListener('click', () => audio.play());
+        document.getElementById('pause').addEventListener('click', () => audio.pause());
+        document.getElementById('stop').addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        document.getElementById('volume').addEventListener('input', (event) => {
+            audio.volume = event.target.value;
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .drum-pad {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background: #ddd;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="drum-pad" data-sound="kick">Kick</div>
+    <div class="drum-pad" data-sound="snare">Snare</div>
+    <div class="drum-pad" data-sound="hihat">Hi-Hat</div>
+
+    <script>
+        const sounds = {
+            kick: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+            snare: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+            hihat: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+        };
+
+        document.querySelectorAll('.drum-pad').forEach(pad => {
+            pad.addEventListener('click', () => {
+                const sound = new Audio(sounds[pad.getAttribute('data-sound')]);
+                sound.play();
+            });
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>Click anywhere or press a key to play a sound.</p>
+    <audio id="clickSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="keypressSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+
+    <script>
+        document.addEventListener('click', () => {
+            document.getElementById('clickSound').play();
+        });
+
+        document.addEventListener('keydown', () => {
+            document.getElementById('keypressSound').play();
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .controls input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <input type="range" id="frequency" min="100" max="1000" value="440" step="10"/> Frequency
+        <input type="range" id="volume" min="-50" max="0" value="-10" step="1"/> Volume
+        <button id="play">Play Tone</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.8.34/build/Tone.js"></script>
+    <script>
+        const synth = new Tone.Synth().toDestination();
+
+        document.getElementById('play').addEventListener('click', () => {
+            const frequency = document.getElementById('frequency').value;
+            const volume = document.getElementById('volume').value;
+            synth.volume.value = volume;
+            synth.triggerAttackRelease(frequency, '8n');
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .controls input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+    <div class="controls">
+        <button id="playMusic">Play Music</button>
+        <button id="pauseMusic">Pause Music</button>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1"/> Volume
+    </div>
+
+    <script>
+        const music = document.getElementById('backgroundMusic');
+        document.getElementById('playMusic').addEventListener('click', () => music.play());
+        document.getElementById('pauseMusic').addEventListener('click', () => music.pause());
+        document.getElementById('volume').addEventListener('input', (event) => {
+            music.volume = event.target.value;
+        });
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form id="registrationForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <div class="error" id="usernameError"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="error" id="passwordError"></div>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div class="error" id="confirmPasswordError"></div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Clear previous errors
+            document.getElementById('usernameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('confirmPasswordError').textContent = '';
+
+            // Get form values
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let valid = true;
+
+            // Validate username
+            if (username.length < 3) {
+                document.getElementById('usernameError').textContent = 'Username must be at least 3 characters long.';
+                valid = false;
+            }
+
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                valid = false;
+            }
+
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+                valid = false;
+            }
+
+            // Confirm passwords match
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+                valid = false;
+            }
+
+            if (valid) {
+                alert('Registration successful!');
+                // Here you would typically send the data to the server
+                // e.g., using fetch or XMLHttpRequest
+            }
+        });
+    </script>
+</body>
+</html>
